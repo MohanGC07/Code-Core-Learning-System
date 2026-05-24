@@ -2,7 +2,7 @@
 
 <br>
 
-# 🚀 Code-Core-Learning-System
+# 🚀 CodeCraft Learning Lab
 
 **A hands-on teaching system for Python · PictoBlox · Robotics**
 
@@ -101,7 +101,7 @@ Module 04 ──► Real-World       Automation, smart devices, integration
 ## 📁 Folder Structure
 
 ```
-code-core-learning-system/
+codecraft-learning-lab/
 │
 ├── 📂 python/
 │   ├── module-01-basics/
@@ -241,5 +241,4 @@ Made with ❤️ for curious minds everywhere
 *Happy coding!* 🚀
 
 <br>
-</div>#   C o d e - C o r e - L e a r n i n g - S y s t e m  
- 
+</div>
