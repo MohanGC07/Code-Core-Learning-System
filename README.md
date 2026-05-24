@@ -2,19 +2,10 @@
 
 <br>
 
-# 🚀 CodeCraft Learning Lab
+# 🚀 Code-Core-Learning-System
 
 **A hands-on teaching system for Python · PictoBlox · Robotics**
 
-<br>
-
-![Lessons](https://img.shields.io/badge/Lessons-60%2B-4CAF50?style=flat-square)
-![Grade](https://img.shields.io/badge/Grade%20Level-6--10-2196F3?style=flat-square)
-![Tracks](https://img.shields.io/badge/Tracks-3-FF9800?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-9C27B0?style=flat-square)
-![Maintained](https://img.shields.io/badge/Maintained-Actively-00BCD4?style=flat-square)
-
-<br>
 
 > *"Tell me and I forget. Teach me and I remember. Involve me and I learn."*
 > — Benjamin Franklin
@@ -101,7 +92,7 @@ Module 04 ──► Real-World       Automation, smart devices, integration
 ## 📁 Folder Structure
 
 ```
-codecraft-learning-lab/
+code-core-learning-system/
 │
 ├── 📂 python/
 │   ├── module-01-basics/
