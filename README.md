@@ -241,5 +241,4 @@ Made with ❤️ for curious minds everywhere
 *Happy coding!* 🚀
 
 <br>
-</div>#   C o d e - C o r e - L e a r n i n g - S y s t e m  
- 
+</div>
