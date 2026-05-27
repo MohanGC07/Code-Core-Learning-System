@@ -1,67 +1,153 @@
-site_url: https://mohangc07.github.io/code-core-learning-system/
+# ============================================================
+# mkdocs.yml — Code & Core Learning System
+# ============================================================
+
 site_name: Code & Core Learning System
-site_description: Learn Coding, Robotics, AI and Technology
+site_url: https://mohangc07.github.io/code-core-learning-system/
+site_description: Learn Coding, Robotics, AI and Technology step by step
 site_author: Mohan G.C
 
 docs_dir: docs
 
+repo_name: MohanGC07/code-core-learning-system
+repo_url: https://github.com/MohanGC07/code-core-learning-system
+edit_uri: edit/main/docs/
+
+# ============================================================
+# THEME
+# ============================================================
 theme:
   name: material
-
   palette:
-
     - scheme: default
       primary: blue
       accent: indigo
       toggle:
         icon: material/weather-night
         name: Dark mode
-
     - scheme: slate
       primary: blue
       accent: indigo
       toggle:
         icon: material/weather-sunny
         name: Light mode
-
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.indexes
     - search.highlight
     - search.share
+    - search.suggest
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
-
+    - content.tooltips
+    - announce.dismiss
   logo: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg
-
   favicon: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg
-
   icon:
-    repo: fontawesome/brands/github  
+    repo: fontawesome/brands/github
 
+# ============================================================
+# MARKDOWN EXTENSIONS
+# ============================================================
 markdown_extensions:
+
+  # Admonition blocks — !!! note, !!! warning, etc.
   - admonition
-  - pymdownx.highlight
-  - pymdownx.superfences
-  - tables
+
+  # Collapsible admonitions — ??? note
+  - pymdownx.details
+
+  # Syntax highlighted code blocks
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+
+  # Inline code highlighting
+  - pymdownx.inlinehilite
+
+  # Tabbed content — === "Python"
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  # Mermaid diagrams + code blocks — THIS IS THE KEY FIX
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  # Emoji and icons
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # Better list handling
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # Keys like ++ctrl+c++
+  - pymdownx.keys
+
+  # Mark text ==highlighted==
+  - pymdownx.mark
+
+  # Strikethrough ~~text~~
+  - pymdownx.tilde
+
+  # HTML attributes on elements
   - attr_list
+
+  # Markdown inside HTML blocks
   - md_in_html
+
+  # Tables
+  - tables
+
+  # Table of contents with anchor links
   - toc:
       permalink: true
+      title: On this page
 
+  # Footnotes
+  - footnotes
+
+  # Definition lists
+  - def_list
+
+# ============================================================
+# PLUGINS
+# ============================================================
 plugins:
-  - search
+  - search:
+      lang: en
 
+# ============================================================
+# EXTRA — Mermaid JS must be loaded via extra_javascript
+# ============================================================
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+
+extra_css: []
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/MohanGC07/code-core-learning-system
+
+# ============================================================
+# NAVIGATION
+# ============================================================
 nav:
   - Home: index.md
-
   - Coding:
-
-      - Python:
-          - Module 01 Basics:
-              - Lesson 01: coding/python/module-01-basics/lesson-01.md
-              - Lesson 02: coding/python/module-01-basics/lesson-02.md
-              - Lesson 03: coding/python/module-01-basics/lesson-03.md
+    - Python:
+      - Module 01 — Basics:
+        - coding/python/module-01-basics/index.md
+        - Lesson 01 — Welcome to Python: coding/python/module-01-basics/lesson-01.md
+        - Lesson 02 — Variables & Data: coding/python/module-01-basics/lesson-02.md
+        - Lesson 03 — Control Flow: coding/python/module-01-basics/lesson-03.md
