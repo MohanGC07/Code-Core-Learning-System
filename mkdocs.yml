@@ -1,0 +1,55 @@
+site_name: Code & Core Learning System
+site_description: Learn Coding, Robotics, AI and Technology
+site_author: Mohan G.C
+
+docs_dir: docs
+
+theme:
+  name: material
+
+  palette:
+
+    - scheme: default
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
+
+    - scheme: slate
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+
+  - Coding:
+
+      - Python:
+          - Module 01 Basics:
+              - Lesson 01: coding/python/module-01-basics/lesson-01.md
+              - Lesson 02: coding/python/module-01-basics/lesson-02.md
+              - Lesson 03: coding/python/module-01-basics/lesson-03.md
