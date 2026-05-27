@@ -1,3 +1,4 @@
+site_url: https://mohangc07.github.io/code-core-learning-system/
 site_name: Code & Core Learning System
 site_description: Learn Coding, Robotics, AI and Technology
 site_author: Mohan G.C
@@ -31,12 +32,23 @@ theme:
     - search.highlight
     - search.share
     - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+
+  logo: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg
+
+  favicon: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg
+
+  icon:
+    repo: fontawesome/brands/github  
 
 markdown_extensions:
   - admonition
   - pymdownx.highlight
   - pymdownx.superfences
   - tables
+  - attr_list
+  - md_in_html
   - toc:
       permalink: true
 

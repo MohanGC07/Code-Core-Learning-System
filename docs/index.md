@@ -1,40 +1,31 @@
 # Code & Core Learning System
 
-Learn modern technology step by step.
+> Learn Coding, Robotics, AI and Technology step by step.
 
 ---
 
-## Available Subjects
+## Learning Paths
 
-### Coding
-- Python
-- Web Development
-- Data Science
-- AI & Machine Learning
+<div class="grid cards" markdown>
 
-### Robotics
-- Arduino
-- Sensors
-- Embedded Systems
-- Automation
+- :material-language-python: __Python Programming__
 
-### Resources
-- Notes
-- Cheat Sheets
-- Project Guides
+    Learn Python from beginner to advanced.
 
----
+    [Start Learning](coding/python/module-01-basics/lesson-01.md)
 
-## Learning Style
+- :material-robot-industrial: __Robotics__
 
-Each subject contains:
-- Modules
-- Lessons
-- Projects
-- Practice Tasks
+    Learn Arduino, sensors and automation.
 
----
+    [Explore Robotics](robotics/)
 
-## Start Learning
+- :material-brain: __Artificial Intelligence__
 
-Choose a subject from the navigation sidebar.
+    AI and Machine Learning roadmap and notes.
+
+- :material-file-document: __Resources__
+
+    Notes, guides, projects and references.
+
+</div>
