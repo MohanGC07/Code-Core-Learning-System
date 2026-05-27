@@ -1,784 +1,842 @@
-# 📘 Lesson 02: Variables, Data Types & Input/Output in Python
+---
+title: Lesson 02 — Variables, Data Types & Input/Output
+description: Learn how Python stores data, the four core data types, how to get user input, display output, use comments, indentation, typecasting, and string operations.
+---
 
-> **Track:** Python Programming  
-> **Module:** 01 — Foundations of Python  
-> **Duration:** ~60 minutes  
-> **Difficulty:** 🟢 Beginner  
+# Lesson 02 — Variables, Data Types & Input/Output
+
+<div class="grid cards" markdown>
+
+-   ⏱️ **Duration**
+
+    70 minutes
+
+-   🎯 **Track**
+
+    Python — Module 01
+
+-   📊 **Difficulty**
+
+    🟢 Beginner
+
+-   📦 **Requires**
+
+    Lesson 01 complete · Python installed
+
+</div>
 
 ---
 
 ## 🎯 Learning Objectives
 
-By the end of this lesson, you will be able to:
+!!! success "By the end of this lesson you will be able to:"
 
-- [ ] Define what data and variables are and explain why they are needed
-- [ ] Identify Python's core data types: `int`, `float`, `str`, `bool`
-- [ ] Write variables using correct naming rules and conventions
-- [ ] Use `input()` to collect data from a user
-- [ ] Use `print()` for both formatted and unformatted output
-- [ ] Write comments and apply correct indentation in Python
-- [ ] Perform implicit and explicit type casting
-- [ ] Perform basic string operations including concatenation and slicing
-
-> **Why does this matter?**  
-> Every program ever written — from a simple calculator to a social media platform — stores and processes data. Variables are the fundamental building blocks that make that possible. Master this lesson and you understand the core mechanism of all programming.
+    - [x] Explain what data is and why programs need to store it
+    - [x] Create variables using correct naming rules
+    - [x] Identify and use Python's four core data types
+    - [x] Take user input with `input()` and display output with `print()`
+    - [x] Write formatted and unformatted output
+    - [x] Add comments and understand why indentation matters
+    - [x] Convert between data types using typecasting
+    - [x] Perform essential string operations
 
 ---
 
-## 🧠 Concept Explanation
+## 🧠 What is Data?
 
-### What is Data?
+**Data** is any piece of information a program works with.
 
-**Data** is any piece of information that a computer can store and process. It can be a number, a piece of text, a true/false value, a date, an image — anything that carries meaning.
+Your name is data. Your age is data. Whether today is sunny — data.
+Whether you passed your exam — data. The number of students in a
+classroom — data.
 
-In programming, data flows through your program. You collect it (from users, files, or sensors), process it (calculate, compare, transform), and display or store the result. Data is the *raw material* of every program.
+Every program ever written follows the same three steps:
 
-### What is a Variable?
+```mermaid
+flowchart LR
+    A(["📥 Receive\nData"]) --> B(["⚙️ Process\nData"])
+    B --> C(["📤 Output\nData"])
 
-A **variable** is a named storage location in your computer's memory where you can hold a piece of data. You give it a name, assign it a value, and then use that name whenever you need that value.
+    style A fill:#1e88e5,color:#fff,stroke:none
+    style B fill:#43a047,color:#fff,stroke:none
+    style C fill:#e53935,color:#fff,stroke:none
+```
 
-### 🌍 Real-World Analogy
-
-> Think of a variable like a **labeled storage box on a shelf**.
->
-> Just like a box labeled "Pencils" can hold pencils — and you can take them out, put new ones in, or check what's inside by reading the label — a variable holds data that you can read, update, or replace at any time.
->
-> *Example: A variable called `score` might hold the number `0` at the start of a game, and `150` after you complete a level. The label stays the same; the contents change.*
+Without data, a program has nothing to work with.
 
 ---
 
-## 📖 Core Content
+## 📦 What is a Variable?
 
-### Creating Variables in Python
+A **variable** is a named storage location in memory that holds
+a piece of data.
 
-In Python, you create a variable simply by writing its name, an equals sign, and a value. There is no special keyword needed.
+!!! quote "The Analogy"
+    Think of a variable like a **labeled box in a storage room**.
+
+    Each box has a **label** (the variable name) and something
+    **inside it** (the value). You can open the box, look inside,
+    take out the old thing, and put in something new.
+
+    `score = 95` means:
+    *"Find the box labeled `score` and put the value `95` inside it."*
+
+### Creating a Variable
 
 ```python
-# Creating variables — name = value
-name = "Priya"          # Stores a piece of text (string)
-age = 15                # Stores a whole number (integer)
-height = 5.4            # Stores a decimal number (float)
-is_student = True       # Stores a true/false value (boolean)
-
-print(name)             # Output: Priya
-print(age)              # Output: 15
+variable_name = value
 ```
 
-**🔍 What's happening here?**
-- Line 2: Python creates a box called `name` and puts the text `"Priya"` inside it
-- Line 3: Python creates a box called `age` and puts the number `15` inside it
-- Line 7: `print(name)` looks up the box labeled `name` and displays its contents
-
----
-
-### Data Types in Python
-
-Every value in Python has a **type** — which describes what kind of data it is and what operations are allowed on it.
-
-#### The Four Core Data Types
-
-**1. `int` — Integer (whole numbers)**
+The `=` sign is the **assignment operator**. It does not mean
+"equals" — it means "store this value in this variable."
 
 ```python
-age = 17
-score = -5
-population = 1000000
-
-print(type(age))        # Output: <class 'int'>
+student_name = "Meera"      # store text
+age          = 14           # store a whole number
+height       = 5.4          # store a decimal number
+is_enrolled  = True         # store True or False
 ```
-
-Use `int` for counting, indexing, and any value that will never have a decimal part.
 
 ---
 
-**2. `float` — Floating Point (decimal numbers)**
+## 🏷️ Rules for Naming Variables
+
+!!! warning "These are enforced by Python — break them and your code won't run"
+
+=== "✅ Rules you MUST follow"
+
+    | Rule | Correct | Wrong |
+    |---|---|---|
+    | Start with a letter or underscore | `name`, `_score` | `1name`, `9lives` |
+    | Only letters, numbers, underscores | `my_score`, `level2` | `my-score`, `my score` |
+    | No spaces | `first_name` | `first name` |
+    | Case-sensitive | `Name` ≠ `name` | — |
+    | No Python keywords | `score`, `total` | `if`, `for`, `class` |
+
+=== "✅ Conventions you SHOULD follow"
+
+    | Convention | Why | Example |
+    |---|---|---|
+    | Use lowercase | Standard Python style (PEP 8) | `student_name` |
+    | Use underscores for spaces | Readable | `first_name` not `firstname` |
+    | Make names meaningful | Code should read like English | `student_count` not `sc` |
+    | Avoid single letters | Except in loops or maths | `score` not `s` |
+
+=== "🚫 Reserved Keywords"
+
+    Never use these as variable names — Python owns them:
+
+    ```
+    False    None     True     and      as       assert
+    async    await    break    class    continue def
+    del      elif     else     except   finally  for
+    from     global   if       import   in       is
+    lambda   nonlocal not      or       pass     raise
+    return   try      while    with     yield
+    ```
+
+---
+
+## 🗂️ The Four Core Data Types
+
+```mermaid
+flowchart TD
+    A["Python Data Types"] --> B["int\nWhole numbers\n42, -7, 0"]
+    A --> C["float\nDecimal numbers\n3.14, 5.5, -0.1"]
+    A --> D["str\nText in quotes\n'hello', 'Riya'"]
+    A --> E["bool\nTrue or False\nTrue, False"]
+
+    style A fill:#1565c0,color:#fff,stroke:none
+    style B fill:#2e7d32,color:#fff,stroke:none
+    style C fill:#e65100,color:#fff,stroke:none
+    style D fill:#6a1b9a,color:#fff,stroke:none
+    style E fill:#ad1457,color:#fff,stroke:none
+```
+
+=== "🔢 int — Integer"
+
+    Whole numbers. No decimal point. Positive or negative.
+
+    ```python
+    age            = 14
+    score          = 95
+    temperature    = -3
+    year           = 2024
+    student_count  = 30
+    ```
+
+    Used for: counting, indexing, whole-number maths.
+
+=== "🔣 float — Floating Point"
+
+    Decimal numbers. Has a decimal point.
+
+    ```python
+    height      = 5.4
+    gpa         = 3.85
+    pi          = 3.14159
+    price       = 199.99
+    temperature = 36.6
+    ```
+
+    Used for: measurements, prices, scientific values.
+
+=== "📝 str — String"
+
+    Text. Always wrapped in quotes — single `'` or double `"`.
+
+    ```python
+    name      = "Arjun"
+    city      = 'Kathmandu'
+    message   = "Hello, World!"
+    empty     = ""              # empty string is valid
+    ```
+
+    Can contain letters, numbers, symbols, spaces.
+    Used for: names, messages, any human-readable text.
+
+=== "✅ bool — Boolean"
+
+    Only two possible values: `True` or `False`.
+    Capital T and F are required.
+
+    ```python
+    is_enrolled = True
+    has_passed  = False
+    is_raining  = True
+    is_empty    = False
+    ```
+
+    Used for: yes/no decisions, conditions, flags.
+
+### Checking a Variable's Type
 
 ```python
-temperature = 36.6
-pi = 3.14159
-price = 199.99
+score   = 95
+name    = "Meera"
+height  = 5.4
+passed  = True
 
-print(type(temperature))   # Output: <class 'float'>
+print(type(score))    # <class 'int'>
+print(type(name))     # <class 'str'>
+print(type(height))   # <class 'float'>
+print(type(passed))   # <class 'bool'>
 ```
 
-Use `float` for measurements, prices, scientific values, or anything needing precision.
+!!! example "Try this"
+    Create one variable of each type and print its `type()`.
+    Can you find a case where Python guesses the type incorrectly?
 
 ---
 
-**3. `str` — String (text)**
+## ⌨️ Getting Input from the User
+
+The `input()` function pauses your program and waits for the user
+to type something and press Enter.
 
 ```python
-first_name = "Aarav"
-greeting = 'Hello, World!'     # Single or double quotes both work
-sentence = "I am learning Python."
-
-print(type(first_name))        # Output: <class 'str'>
-```
-
-A string is any sequence of characters wrapped in quotes. Numbers inside quotes are also strings: `"42"` is a string, not an integer.
-
----
-
-**4. `bool` — Boolean (True or False)**
-
-```python
-is_logged_in = True
-has_passed_exam = False
-
-print(type(is_logged_in))      # Output: <class 'bool'>
-```
-
-Booleans represent binary states. They're used heavily in conditions and decision-making (coming in a later lesson).
-
-> 💬 **Try this:** Type `type(3.14)` and `type("hello")` in your Python environment. What does Python tell you about each?
-
----
-
-### Rules for Naming a Variable
-
-Python has strict rules and strong conventions for naming variables. Breaking the rules causes errors; breaking conventions makes your code hard to read.
-
-#### ✅ Hard Rules (Breaking these = Error)
-
-| Rule | Example — Correct | Example — Wrong |
-|---|---|---|
-| Must start with a letter or underscore `_` | `name`, `_score` | `1name`, `@value` |
-| Can only contain letters, numbers, underscores | `user_name`, `score2` | `user-name`, `score#2` |
-| Cannot be a Python keyword | `value`, `total` | `if`, `for`, `class` |
-| Case-sensitive | `age` and `Age` are different variables | — |
-
-#### 🎨 Conventions (Breaking these = bad style, not error)
-
-- Use **snake_case** for variable names: `first_name`, `total_score`, `is_active`
-- Use **ALL_CAPS** for constants: `MAX_SPEED = 300`, `PI = 3.14159`
-- Keep names **descriptive**: `user_age` is better than `ua` or `x`
-- Avoid single letters except in loops (`i`, `j`, `n`)
-
-```python
-# ✅ Good variable names
-student_name = "Riya"
-total_marks = 95
-is_present = True
-
-# ❌ Bad variable names (will cause errors)
-# 2nd_student = "Riya"    # starts with a number
-# first-name = "Riya"     # hyphens not allowed
-# class = "Grade 10"      # 'class' is a Python keyword
-```
-
----
-
-### Python Keywords to Avoid as Variable Names
-
-These words are reserved by Python and cannot be used as variable names:
-
-```
-False    None     True     and      as       assert
-async    await    break    class    continue def
-del      elif     else     except   finally  for
-from     global   if       import   in       is
-lambda   nonlocal not      or       pass     raise
-return   try      while    with     yield
-```
-
----
-
-### Input in Python — `input()`
-
-The `input()` function pauses your program and waits for the user to type something and press Enter. Whatever they type is returned as a **string**.
-
-```python
-# Basic input — always returns a string
-name = input("What is your name? ")    # The text inside is the prompt shown to the user
+name = input("What is your name? ")
 print("Hello,", name)
 ```
 
-**Output:**
-```
-What is your name? Aarav
-Hello, Aarav
+**What happens step by step:**
+
+```mermaid
+sequenceDiagram
+    participant P as Program
+    participant U as User
+
+    P->>U: Prints "What is your name? " and waits
+    U->>P: Types "Arjun" and presses Enter
+    P->>P: Stores "Arjun" in variable name
+    P->>U: Prints "Hello, Arjun"
 ```
 
-**🔍 What's happening here?**
-- `input("What is your name? ")` displays the prompt and waits
-- The user types `Aarav` and presses Enter
-- Python stores `"Aarav"` (as a string) in the variable `name`
-- `print()` displays the result
+!!! warning "input() ALWAYS returns a string"
 
-> ⚠️ **Important:** `input()` *always* returns a string — even if the user types a number. `age = input("Enter age: ")` gives you `"15"` (string), not `15` (integer). You must convert it. We'll cover this in the Type Casting section.
+    Even if the user types `14`, Python stores it as the text `"14"`,
+    not the number `14`.
+
+    ```python
+    age = input("Enter your age: ")
+    print(type(age))    # <class 'str'> — NOT int!
+    ```
+
+    This matters when you want to do maths — see Typecasting below.
 
 ---
 
-### Output in Python — `print()`
+## 🖨️ Output — Two Types
 
-`print()` is your tool for displaying data. It supports two styles: **unformatted** and **formatted**.
+=== "Unformatted Output"
 
-#### Unformatted Output
+    Simply printing values separated by commas:
 
-The simplest form — just pass values separated by commas.
+    ```python
+    name = "Riya"
+    age  = 13
 
-```python
-name = "Sita"
-age = 16
-city = "Pokhara"
+    print(name)                        # Riya
+    print(age)                         # 13
+    print("Name:", name)               # Name: Riya
+    print("Name:", name, "Age:", age)  # Name: Riya Age: 13
+    ```
 
-# Comma-separated — Python adds a space between items automatically
-print("Name:", name)
-print("Age:", age)
-print(name, "is", age, "years old and lives in", city)
-```
+    **Customising print() behaviour:**
 
-**Output:**
-```
-Name: Sita
-Age: 16
-Sita is 16 years old and lives in Pokhara
-```
+    ```python
+    # Change the separator (default is a space)
+    print("Python", "is", "great", sep="-")   # Python-is-great
+    print("Python", "is", "great", sep="")    # Pythonisgreat
 
-#### Formatted Output — f-strings (Recommended)
+    # Change the end character (default is newline)
+    print("Hello", end=" ")
+    print("World")                             # Hello World
 
-**f-strings** (formatted string literals) let you embed variables directly inside strings using `{}`. They're the modern, preferred way to format output.
+    # Print a blank line
+    print()
+    ```
 
-```python
-name = "Sita"
-age = 16
-score = 95.5
+=== "Formatted Output (f-strings)"
 
-# f-string: put f before the quote, variables go inside {}
-print(f"Name: {name}")
-print(f"{name} is {age} years old.")
-print(f"Score: {score:.1f}")     # .1f means 1 decimal place
-```
+    **F-strings are the recommended modern approach.**
+    Prefix the string with `f` and put variable names inside `{}`.
 
-**Output:**
-```
-Name: Sita
-Sita is 16 years old.
-Score: 95.5
-```
+    ```python
+    name = "Arjun"
+    age  = 14
+    gpa  = 3.85
 
-#### Formatted Output — `.format()` Method
+    print(f"Name: {name}")
+    print(f"Age: {age}")
+    print(f"GPA: {gpa:.2f}")     # .2f = 2 decimal places
 
-An older but still widely used formatting style:
+    print(f"{name} is {age} years old with a GPA of {gpa:.1f}")
+    ```
 
-```python
-name = "Ram"
-age = 18
+    Output:
+    ```
+    Name: Arjun
+    Age: 14
+    GPA: 3.85
+    Arjun is 14 years old with a GPA of 3.9
+    ```
 
-print("Hello, {}. You are {} years old.".format(name, age))
-print("Pi is approximately {:.2f}".format(3.14159))   # 2 decimal places
-```
+    **Other formatting options:**
 
-**Output:**
-```
-Hello, Ram. You are 18 years old.
-Pi is approximately 3.14
-```
-
-#### Useful `print()` Parameters
-
-```python
-# sep — changes what goes between items (default is a space)
-print("A", "B", "C", sep="-")          # Output: A-B-C
-print("2024", "01", "15", sep="/")     # Output: 2024/01/15
-
-# end — changes what comes after the last item (default is a new line)
-print("Hello", end=" ")
-print("World")                          # Output: Hello World (on one line)
-
-# Printing an empty line
-print()                                 # Prints nothing, creates a blank line
-```
-
-> 💬 **Try this:** Change the `sep` and `end` values and observe how the output changes.
+    ```python
+    price = 1999.5
+    print(f"Price: ${price:.2f}")      # Price: $1999.50
+    print(f"Score: {95:>10}")          # right-align in 10 chars
+    print(f"{'TITLE':^30}")            # centre in 30 chars
+    ```
 
 ---
 
-### Comments in Python
+## 💬 Comments in Python
 
-**Comments** are notes you write in your code for yourself and other programmers. Python completely ignores them when running your program.
-
-#### Single-Line Comments
-
-Use `#` — everything after it on that line is a comment.
+A **comment** is a line Python completely ignores. Written for humans.
 
 ```python
-# This is a full-line comment
-name = "Anjali"   # This is an inline comment — explains what this line does
+# This is a single-line comment
 
-# The line below is "commented out" — Python won't run it
-# print("This will not appear")
+name = "Arjun"    # Inline comment — after the code on same line
 
-print(name)       # Output: Anjali
-```
-
-#### Multi-Line Comments (Docstrings)
-
-Python doesn't have a true multi-line comment syntax, but triple quotes `"""` or `'''` are commonly used for longer explanations.
-
-```python
 """
-This program calculates the average of three scores.
-Author: Aarav Sharma
-Date: January 2024
+This is a multi-line comment (technically a docstring).
+Use it to describe what a file or function does.
+Python ignores everything inside triple quotes.
 """
-
-score1 = 85
-score2 = 90
-score3 = 78
-average = (score1 + score2 + score3) / 3
-print(f"Average score: {average:.1f}")
 ```
 
-> 📌 **Best Practice:** Write comments that explain *why* you're doing something, not just *what* you're doing. `# add 1 to count` is obvious; `# add 1 because array index starts at 0` is useful.
+**Why comments matter:**
+
+```python
+# WITHOUT comments — confusing:
+x = 86400
+y = x * 30
+
+# WITH comments — immediately clear:
+seconds_per_day   = 86400        # 60 sec × 60 min × 24 hours
+seconds_per_month = seconds_per_day * 30
+```
+
+!!! tip "Comment the WHY, not the WHAT"
+    If the code is already clear, don't over-explain.
+    If the logic is complex or non-obvious, always explain your reasoning.
 
 ---
 
-### Indentation in Python
+## ↩️ Indentation in Python
 
-Indentation is not just style in Python — **it is part of the syntax**. Python uses indentation (spaces or tabs) to define blocks of code (like the body of a function, loop, or condition). Getting it wrong causes an `IndentationError`.
-
-```python
-# Correct indentation — the print inside if is indented
-age = 18
-if age >= 18:
-    print("You are an adult.")    # 4 spaces indent
-    print("You can vote.")        # Same block = same indent
-
-print("This line is outside the if block.")   # No indent
-```
-
-**Output:**
-```
-You are an adult.
-You can vote.
-This line is outside the if block.
-```
-
-**Rules:**
-- Use **4 spaces** per indentation level (the Python community standard)
-- Be consistent — don't mix tabs and spaces
-- VS Code automatically handles indentation for you
+In most languages, indentation is just style. In Python,
+**indentation is part of the syntax** — it defines structure.
 
 ```python
-# ❌ IndentationError — inconsistent indentation
-if True:
-  print("Two spaces")    # 2 spaces
-    print("Four spaces") # 4 spaces — ERROR: unexpected indent
+# CORRECT
+if 10 > 5:
+    print("Ten is greater")    # 4 spaces — inside the if block
+    print("This runs too")     # same indent — still inside
+print("This always runs")      # no indent — outside the if block
+
+# WRONG — IndentationError
+if 10 > 5:
+print("Ten is greater")        # ❌ Missing indent — Python errors here
 ```
+
+!!! warning "Indentation rules"
+    - Always use **4 spaces** per indent level (the Python standard)
+    - Never mix tabs and spaces
+    - Everything inside a block must be at the same level
+
+We use indentation heavily from Lesson 03 onwards — for now, just
+know: **Python uses spacing to understand your program's structure.**
 
 ---
 
-### Type Casting in Python
+## 🔄 Typecasting
 
-**Type casting** means converting a value from one data type to another. This is essential because `input()` always returns strings, but you often need numbers.
+**Typecasting** means converting a value from one data type to another.
 
-#### Implicit Type Casting (Automatic)
+```mermaid
+flowchart LR
+    A["str\n'14'"] -->|"int('14')"| B["int\n14"]
+    B -->|"float(14)"| C["float\n14.0"]
+    C -->|"str(14.0)"| D["str\n'14.0'"]
+    D -->|"bool('')"| E["bool\nFalse"]
 
-Python automatically converts types when it's safe to do so — typically from `int` to `float`.
-
-```python
-x = 5       # int
-y = 2.0     # float
-
-result = x + y          # Python automatically converts x to float
-print(result)           # Output: 7.0
-print(type(result))     # Output: <class 'float'>
+    style A fill:#6a1b9a,color:#fff,stroke:none
+    style B fill:#2e7d32,color:#fff,stroke:none
+    style C fill:#e65100,color:#fff,stroke:none
+    style D fill:#6a1b9a,color:#fff,stroke:none
+    style E fill:#ad1457,color:#fff,stroke:none
 ```
 
-Python widened `int` to `float` without any instruction because no data is lost.
+=== "Implicit (Python does it automatically)"
+
+    Python quietly converts types when it makes sense:
+
+    ```python
+    num_int   = 5      # int
+    num_float = 2.5    # float
+
+    result = num_int + num_float
+    print(result)        # 7.5
+    print(type(result))  # <class 'float'>
+    ```
+
+    Python upgraded the result to `float` so no precision is lost.
+
+    ```python
+    print(3 + 4.0)      # 7.0  — int + float = float
+    print(True + 5)     # 6    — True is internally 1
+    print(False + 10)   # 10   — False is internally 0
+    ```
+
+=== "Explicit (you do it manually)"
+
+    | Function | Converts to | Example |
+    |---|---|---|
+    | `int()` | Integer | `int("14")` → `14` |
+    | `float()` | Float | `float("3.14")` → `3.14` |
+    | `str()` | String | `str(42)` → `"42"` |
+    | `bool()` | Boolean | `bool(0)` → `False` |
+
+    ```python
+    # Most common real-world scenario
+    age_text   = input("Enter your age: ")   # "14" — a string
+    age_number = int(age_text)               # 14   — now a number
+    birth_year = 2024 - age_number
+    print(f"You were born around {birth_year}")
+    ```
+
+    **Shortcut — convert directly inside input():**
+
+    ```python
+    age   = int(input("Enter your age: "))
+    price = float(input("Enter the price: "))
+    ```
+
+=== "What can go wrong"
+
+    ```python
+    int("hello")     # ❌ ValueError — not a valid number
+    int("3.14")      # ❌ ValueError — can't convert decimal string to int
+    float("3.14")    # ✅ Works fine
+    int(float("3.14"))  # ✅ "3.14" → 3.14 → 3
+    ```
+
+    !!! danger "Always convert input before doing maths"
+        If you try `int("hello")` Python crashes with a `ValueError`.
+        Later we will learn how to handle these errors gracefully.
 
 ---
 
-#### Explicit Type Casting (Manual)
+## 🔤 String Operations
 
-You force the conversion using built-in functions.
+Strings are far more powerful than just storing text.
 
-| Function | Converts to | Example |
-|---|---|---|
-| `int()` | Integer | `int("15")` → `15` |
-| `float()` | Float | `float("3.14")` → `3.14` |
-| `str()` | String | `str(42)` → `"42"` |
-| `bool()` | Boolean | `bool(0)` → `False` |
+=== "Basic Operations"
 
-```python
-# int() — converting string input to integer for math
-age_str = input("Enter your age: ")    # Returns "17" (string)
-age = int(age_str)                     # Convert to integer
-print(f"In 5 years, you will be {age + 5} years old.")
+    ```python
+    # Concatenation — joining strings
+    first = "Code"
+    second = "Core"
+    print(first + second)        # CodeCore
+    print(first + " " + second)  # Code Core
 
-# float() — converting string to decimal
-price_str = "99.99"
-price = float(price_str)
-discounted = price * 0.9              # 10% off
-print(f"Discounted price: {discounted:.2f}")
+    # Repetition
+    print("-" * 30)              # ------------------------------
+    print("Ha" * 3)              # HaHaHa
 
-# str() — converting number to string for display
-score = 95
-message = "Your score is " + str(score) + " out of 100."
-print(message)
-```
+    # Length
+    name = "Kathmandu"
+    print(len(name))             # 9
+    print(len(""))               # 0
+    ```
 
-**Output:**
-```
-Enter your age: 17
-In 5 years, you will be 22 years old.
-Discounted price: 89.99
-Your score is 95 out of 100.
-```
+=== "Indexing & Slicing"
 
-> ⚠️ **Watch out:** `int("hello")` will cause a `ValueError` — you can only convert strings that actually look like numbers. Always validate user input in real programs.
+    Every character has a position starting from 0:
 
----
+    ```python
+    name = "Python"
+    #       P  y  t  h  o  n
+    # index: 0  1  2  3  4  5
+    # neg:  -6 -5 -4 -3 -2 -1
 
-### String Operations in Python
+    print(name[0])      # P   — first character
+    print(name[-1])     # n   — last character
+    print(name[0:3])    # Pyt — index 0 up to (not including) 3
+    print(name[2:])     # thon — from index 2 to end
+    print(name[:4])     # Pyth — from start to index 4
+    print(name[::-1])   # nohtyP — reversed!
+    ```
 
-Strings are one of the most powerful data types in Python, with many built-in operations.
+=== "String Methods"
 
-#### Concatenation — Joining Strings
+    ```python
+    text = "  Hello, Python World!  "
 
-Use `+` to join two or more strings together.
+    # Case
+    print(text.upper())           # "  HELLO, PYTHON WORLD!  "
+    print(text.lower())           # "  hello, python world!  "
+    print(text.title())           # "  Hello, Python World!  "
 
-```python
-first = "Guido"
-last = "van Rossum"
-full_name = first + " " + last    # Must manually add the space
-print(full_name)                   # Output: Guido van Rossum
-```
+    # Whitespace
+    print(text.strip())           # "Hello, Python World!"
+    print(text.lstrip())          # "Hello, Python World!  "
+    print(text.rstrip())          # "  Hello, Python World!"
 
-#### Repetition — Repeating Strings
+    # Searching
+    print(text.find("Python"))    # 9 — index where it starts
+    print(text.count("l"))        # 3 — how many times
+    print("Python" in text)       # True
 
-Use `*` to repeat a string a number of times.
+    # Replacing & Splitting
+    print(text.replace("Python", "World"))
+    fruits = "apple,mango,banana".split(",")
+    print(fruits)                 # ['apple', 'mango', 'banana']
 
-```python
-print("Ha" * 3)       # Output: HaHaHa
-print("-" * 30)       # Output: ------------------------------ (30 dashes, great for separators)
-```
-
-#### String Length — `len()`
-
-```python
-name = "Kathmandu"
-print(len(name))      # Output: 9
-```
-
-#### Indexing — Accessing Individual Characters
-
-Strings are indexed starting from `0`. Use negative indices to count from the end.
-
-```python
-word = "Python"
-#        P y t h o n
-# Index: 0 1 2 3 4 5
-# Neg:  -6-5-4-3-2-1
-
-print(word[0])    # Output: P   (first character)
-print(word[3])    # Output: h
-print(word[-1])   # Output: n   (last character)
-print(word[-2])   # Output: o
-```
-
-#### Slicing — Extracting a Portion of a String
-
-Syntax: `string[start:stop:step]`
-- `start` — index to begin (inclusive)
-- `stop` — index to end (exclusive — the character at this index is NOT included)
-- `step` — how many characters to skip (default is 1)
-
-```python
-text = "Python Programming"
-#       0123456789...
-
-print(text[0:6])      # Output: Python     (characters 0 to 5)
-print(text[7:])       # Output: Programming (from index 7 to end)
-print(text[:6])       # Output: Python     (from start to index 5)
-print(text[::2])      # Output: Pto rgamn  (every second character)
-print(text[::-1])     # Output: gnimmargorP nohtyP (reversed!)
-```
-
-#### Common String Methods
-
-```python
-message = "  Hello, World!  "
-
-print(message.upper())        # Output:   HELLO, WORLD!  
-print(message.lower())        # Output:   hello, world!  
-print(message.strip())        # Output: Hello, World!   (removes whitespace)
-print(message.replace("World", "Python"))   # Output:   Hello, Python!  
-print(message.strip().split(", "))          # Output: ['Hello', 'World!']
-
-sentence = "python is amazing"
-print(sentence.capitalize())  # Output: Python is amazing
-print(sentence.title())       # Output: Python Is Amazing
-print(sentence.count("is"))   # Output: 1
-print(sentence.startswith("python"))  # Output: True
-```
-
-> 💬 **Try this:** Take the string `"CodeCraft Learning Lab"` and use slicing to extract just the word `"Learning"`.
+    # Checking content
+    print("hello".isalpha())      # True  — only letters
+    print("123".isdigit())        # True  — only digits
+    print("hello123".isalnum())   # True  — letters and/or digits
+    ```
 
 ---
 
 ## 🛠️ Step-by-Step Activity
 
-> Follow these steps carefully. We're building a personal profile program from scratch.
+!!! info "What we are building"
+    A **Student Profile Card** — a program that collects your
+    information and prints a neatly formatted card.
 
-**What we're building:** A program that asks for user information and displays a formatted personal profile card.
+**File:** `lesson02.py`
 
-**What you need:**
-- [ ] VS Code with `lesson_02.py` open, OR a new Replit project
-
----
-
-**Step 1 — Collect User Information with `input()`**
+**Step 1 — Collect input**
 
 ```python
-# Step 1: Collect basic user information
-print("=" * 35)
-print("   Welcome to Profile Creator!")
-print("=" * 35)
+# lesson02.py — Student Profile Card
 
-name = input("Enter your full name: ")
-age_str = input("Enter your age: ")
-city = input("Enter your city: ")
-hobby = input("Enter your favourite hobby: ")
-```
-
----
-
-**Step 2 — Convert and Process the Data**
-
-```python
-# Step 2: Convert age from string to integer
-age = int(age_str)
-
-# Calculate some additional info
-birth_year = 2024 - age
-name_length = len(name)
-initials = name[0]    # First character of name
-```
-
----
-
-**Step 3 — Display a Formatted Profile Card**
-
-```python
-# Step 3: Display the formatted profile
+print("===== STUDENT PROFILE GENERATOR =====")
 print()
-print("=" * 35)
-print("        YOUR PROFILE CARD")
-print("=" * 35)
-print(f"  Name     : {name}")
-print(f"  Age      : {age} years old")
-print(f"  Born     : {birth_year} (approx.)")
-print(f"  City     : {city}")
-print(f"  Hobby    : {hobby}")
-print(f"  Initials : {initials}")
-print(f"  Name has : {name_length} characters")
-print("=" * 35)
+
+name    = input("Enter your full name    : ")
+age     = int(input("Enter your age         : "))
+city    = input("Enter your city         : ")
+subject = input("Favourite subject       : ")
+score   = float(input("Score in that subject  : "))
 ```
 
----
+**Step 2 — Process the data**
 
-**Step 4 — Run & Test**
-
-Save the file and run it. Enter your actual details when prompted.
-
-You should see something like:
-
-```
-===================================
-   Welcome to Profile Creator!
-===================================
-Enter your full name: Aarav Sharma
-Enter your age: 15
-Enter your city: Kathmandu
-Enter your favourite hobby: coding
-
-===================================
-        YOUR PROFILE CARD
-===================================
-  Name     : Aarav Sharma
-  Age      : 15 years old
-  Born     : 2009 (approx.)
-  City     : Kathmandu
-  Hobby    : coding
-  Initials : A
-  Name has : 12 characters
-===================================
+```python
+# Assign a grade based on score
+if score >= 90:
+    grade = "A+"
+elif score >= 80:
+    grade = "A"
+elif score >= 70:
+    grade = "B"
+elif score >= 60:
+    grade = "C"
+else:
+    grade = "D"
 ```
 
-❓ **If you see an error:** If Python says `ValueError: invalid literal for int()`, you accidentally typed letters instead of a number for your age. Check that `int(age_str)` is on its own line and that you typed a number when prompted.
+**Step 3 — Display the formatted card**
 
----
+```python
+border = "=" * 40
 
-## 🏋️ Hands-On Exercise
-
-> **Do this on your own.** It's okay to look back at the examples above.
-
-**Exercise: Temperature Converter**
-
-Build a program that asks the user for a temperature in Celsius and converts it to Fahrenheit.
-
-**Requirements:**
-- Use `input()` to get a Celsius temperature from the user
-- Convert it to a float with `float()`
-- Use the formula: `fahrenheit = (celsius * 9/5) + 32`
-- Display the result formatted to 1 decimal place using an f-string
-- Use at least two comments in your code
+print()
+print(border)
+print("         STUDENT PROFILE CARD")
+print(border)
+print(f"  Name      : {name}")
+print(f"  Age       : {age} years")
+print(f"  City      : {city}")
+print(f"  Subject   : {subject}")
+print(f"  Score     : {score:.1f} / 100")
+print(f"  Grade     : {grade}")
+print(border)
+print(f"  Name (CAPS) : {name.upper()}")
+print(f"  Name length : {len(name)} characters")
+print(border)
+```
 
 **Expected output:**
+
 ```
-Enter temperature in Celsius: 100
-100.0°C is equal to 212.0°F
+===== STUDENT PROFILE GENERATOR =====
+
+Enter your full name    : Arjun Sharma
+Enter your age         : 14
+Enter your city         : Kathmandu
+Favourite subject       : Mathematics
+Score in that subject  : 87.5
+
+========================================
+         STUDENT PROFILE CARD
+========================================
+  Name      : Arjun Sharma
+  Age       : 14 years
+  City      : Kathmandu
+  Subject   : Mathematics
+  Score     : 87.5 / 100
+  Grade     : B
+========================================
+  Name (CAPS) : ARJUN SHARMA
+  Name length : 12 characters
+========================================
 ```
 
-<details>
-<summary>💡 Hint (click only if stuck)</summary>
-
-You need `float()` not `int()` for temperature — users might type `36.6`. The formula is: `fahrenheit = (celsius * 9/5) + 32`. Use an f-string with `{celsius:.1f}` and `{fahrenheit:.1f}` to format to one decimal place.
-
-</details>
+!!! danger "If you get a ValueError"
+    Check that `int()` or `float()` wrap your `input()` calls for
+    number fields. You cannot do maths with a string.
 
 ---
 
-## 🔥 Challenge Task
+## 🏋️ Practice Exercise
 
-> This is harder. It's okay if it takes longer — that means you're really thinking.
+!!! question "Exercise — Personal Calculator"
 
-**Challenge: Word Inspector**
+    Write a program that:
 
-Build a program that takes any word or sentence from the user and performs a full analysis on it.
+    1. Asks for the user's name
+    2. Asks for two numbers as floats
+    3. Asks which operation: `add`, `subtract`, `multiply`, or `divide`
+    4. Displays the result in a formatted sentence
 
-**It should display:**
-- The original input
-- The input in ALL CAPS
-- The input in all lowercase
-- The number of characters (including spaces)
-- The first and last character
-- The string reversed (use slicing `[::-1]`)
-- Whether the input starts with a vowel (a, e, i, o, u) — True or False
+    **Expected output:**
+    ```
+    Enter your name: Meera
+    Enter first number: 24.5
+    Enter second number: 6
+    Operation (add/subtract/multiply/divide): multiply
 
-**Example output:**
-```
-Enter a word or sentence: Python Rocks
+    -----------------------------------
+    Meera's result: 24.5 × 6.0 = 147.0
+    -----------------------------------
+    ```
 
---- Word Inspector Results ---
-Original  : Python Rocks
-Uppercase : PYTHON ROCKS
-Lowercase : python rocks
-Length    : 12 characters
-First char: P
-Last char : s
-Reversed  : skcoR nohtyP
-Starts with vowel: False
-```
+    ??? tip "Hint — click to reveal"
+        Use `float(input(...))` to get numbers.
+        Use a simple `if` for each operation:
+        ```python
+        if operation == "add":
+            result = num1 + num2
+        ```
+        We cover this fully in Lesson 03 — for now write one `if`
+        per operation.
 
-**Extension ideas (if you finish early):**
-- Count how many vowels appear in the input
-- Count how many spaces are in the input using `.count(" ")`
+---
+
+## 🔥 Challenge
+
+!!! danger "Challenge — Smart Name Analyser"
+
+    Ask the user for their full name and print a detailed analysis:
+
+    **Must include:**
+
+    - Total length including spaces
+    - First name and last name length separately (use `.split()`)
+    - Name in ALL CAPS and all lowercase
+    - First character and last character
+    - Number of vowels (`a e i o u` — upper and lower)
+    - Whether the name has more than 10 characters (`True`/`False`)
+
+    **Expected output (for "Arjun Sharma"):**
+    ```
+    ===== NAME ANALYSIS =====
+    Full name     : Arjun Sharma
+    Full length   : 12 characters
+    First name    : Arjun  (5 chars)
+    Last name     : Sharma (6 chars)
+    Uppercase     : ARJUN SHARMA
+    Lowercase     : arjun sharma
+    First char    : A
+    Last char     : a
+    Vowel count   : 4
+    Long name?    : True
+    =========================
+    ```
+
+    **Extension ideas:**
+
+    - Check if first name and last name start with the same letter
+    - Print the name reversed using slicing `name[::-1]`
 
 ---
 
 ## 🧪 Quick Quiz
 
-> Test yourself! No peeking at the lesson.
+!!! question "Test yourself — no looking back"
 
-**1.** Which of the following is a valid Python variable name?
+    **1.** Which is NOT a valid Python variable name?
 
-   - a) `2score`
-   - b) `my-name`
-   - c) `first_name`
-   - d) `for`
+    - A) `my_score`
+    - B) `score2`
+    - C) `2score`
+    - D) `_hidden`
 
-**2.** What does this code print?
-```python
-x = "5"
-y = 3
-print(int(x) + y)
-```
+    ---
 
-   - a) `53`
-   - b) `8`
-   - c) `TypeError — can't add string and int`
-   - d) `5y`
+    **2.** What does this code output?
 
-**3.** What does `input()` always return?
+    ```python
+    x = "5"
+    y = 3
+    print(x * y)
+    ```
 
-   - a) An integer
-   - b) A float
-   - c) A string
-   - d) A boolean
+    - A) `8`
+    - B) `15`
+    - C) `555`
+    - D) An error
 
-**4.** What is the output of:
-```python
-word = "Learning"
-print(word[0:4])
-```
+    ---
 
-   - a) `earn`
-   - b) `Lear`
-   - c) `Lea`
-   - d) `Learning`
+    **3.** After this line runs, what is the data type of `age`?
 
-**5.** Write a line of code that converts the string `"42"` to an integer and stores it in a variable called `num`.
+    ```python
+    age = input("Enter age: ")
+    ```
 
-<details>
-<summary>✅ Answer Key</summary>
+    - A) `int`
+    - B) `float`
+    - C) `str`
+    - D) `bool`
 
-1. **c) `first_name`** — `2score` starts with a digit, `my-name` uses a hyphen, and `for` is a Python keyword.
-2. **b) `8`** — `int("5")` converts the string to integer `5`, then `5 + 3 = 8`.
-3. **c) A string** — `input()` always returns a string, even if the user types a number. You must cast it manually.
-4. **b) `Lear`** — Slicing `[0:4]` takes characters at index 0, 1, 2, 3 (stop index 4 is excluded). `L(0) e(1) a(2) r(3)` = `"Lear"`.
-5. `num = int("42")`
+    ---
 
-</details>
+    **4.** What does `"Hello World".upper().replace("O", "0")` return?
+
+    - A) `"hello world"`
+    - B) `"HELL0 W0RLD"`
+    - C) `"HELLO WORLD"`
+    - D) An error
+
+    ---
+
+    **5.** Write one line of Python that asks the user for a number
+    and immediately stores it as a `float`.
+
+    ??? success "Answer Key — click to reveal"
+
+        | # | Answer | Explanation |
+        |---|--------|-------------|
+        | 1 | **C** `2score` | Variable names cannot start with a digit |
+        | 2 | **C** `555` | `"5" * 3` repeats the string 3 times — string repetition |
+        | 3 | **C** `str` | `input()` always returns a string regardless of what is typed |
+        | 4 | **B** `"HELL0 W0RLD"` | `.upper()` first, then O replaced with zero |
+        | 5 | `number = float(input("Enter a number: "))` | |
 
 ---
 
 ## 🌐 Real-World Connection
 
-> **Where is this used in the real world?**
+Everything in this lesson is used in production software every day:
 
-Every time you create an account on a website, variables store your username, age, email, and preferences. When an online store displays "Hello, Priya! You have 3 items in your cart," that's a string with embedded variables — exactly what you built today with f-strings. When a banking app converts your currency, it's using type casting to ensure the input (always a string from the keyboard) becomes a precise float for accurate financial calculations. The concepts from this lesson are the atomic building blocks of every software application in existence.
+- **Variables** hold user account data, session tokens, game scores
+- **Data types** determine how databases store and query information
+- **`input()`** powers CLI tools, configuration scripts, admin panels
+- **String methods** clean user-submitted form data before saving
+- **Typecasting** is essential in APIs where all data arrives as text
+- **f-strings** generate email templates, reports, and dashboards
 
 ---
 
 ## 📝 Lesson Summary
 
-| Concept | What it does | Quick example |
+| Concept | Key Detail | Quick Example |
 |---|---|---|
-| Variable | Stores a value with a name | `age = 15` |
-| `int` | Whole number data type | `score = 100` |
-| `float` | Decimal number data type | `gpa = 3.85` |
-| `str` | Text/string data type | `name = "Riya"` |
-| `bool` | True or False data type | `is_active = True` |
-| `input()` | Gets keyboard input from user | `name = input("Name: ")` |
-| `print()` | Displays output on screen | `print(f"Hello, {name}")` |
-| `int()` | Converts to integer | `int("15")` → `15` |
-| `float()` | Converts to float | `float("3.14")` → `3.14` |
-| `str()` | Converts to string | `str(42)` → `"42"` |
-| `len()` | Length of a string | `len("Python")` → `6` |
-| String slicing | Extracts part of a string | `"Python"[0:3]` → `"Pyt"` |
-| `#` comment | Adds human-readable notes | `# This explains the code` |
+| **Variable** | Named container for a value | `score = 95` |
+| **int** | Whole numbers | `age = 14` |
+| **float** | Decimal numbers | `gpa = 3.85` |
+| **str** | Text in quotes | `name = "Arjun"` |
+| **bool** | True or False only | `passed = True` |
+| **input()** | Get text from user | `name = input("Name: ")` |
+| **print()** | Show output | `print(f"Hi {name}")` |
+| **f-string** | Formatted output | `f"Age: {age}"` |
+| **Comment** | Note Python ignores | `# this is a note` |
+| **Indentation** | 4 spaces = inside a block | Used in if/loops |
+| **int()** | Explicit cast to integer | `int("14")` → `14` |
+| **float()** | Explicit cast to decimal | `float("3.14")` → `3.14` |
+| **len()** | Length of a string | `len("hello")` → `5` |
+| **.upper()** | Convert to uppercase | `"hi".upper()` → `"HI"` |
+| **.split()** | Split into a list | `"a,b".split(",")` → `["a","b"]` |
 
 **Key takeaways:**
-- 📌 Variables store data — give them clear, descriptive names using snake_case
-- 📌 `input()` always returns a string — use `int()` or `float()` to convert when needed
-- 📌 f-strings (`f"Hello, {name}"`) are the cleanest, most readable way to format output
-- 📌 Indentation in Python is not optional — it defines the structure of your code
+
+- 📌 `input()` **always** returns a string — always typecast for maths
+- 📌 Use **f-strings** for formatted output — cleanest modern approach
+- 📌 String methods return a **new string** — they don't change the original
+- 📌 **Indentation** is not optional — it defines your program's structure
 
 ---
 
-## ➡️ What's Next?
+## ✅ Before Moving On
 
-In the next lesson, we'll explore **Operators & Expressions** — learning how to perform calculations, make comparisons, and combine logic to build programs that make real decisions.
+!!! success "Confirm all five before going to Lesson 03"
 
-Before you go:
-- [ ] I completed the temperature converter exercise
-- [ ] I attempted the word inspector challenge
-- [ ] I can explain the difference between `int`, `float`, `str`, and `bool`
-- [ ] I know how to use `input()` and format output with f-strings
+    - [x] I can create variables of all 4 core data types
+    - [x] I understand why `input()` returns a string
+    - [x] I built and ran the Student Profile Card
+    - [x] I completed the Personal Calculator exercise
+    - [x] I can explain implicit vs explicit typecasting
 
 ---
 
-*Lesson 02 of 03 · Module 01: Python Basics · Python Track · CodeCraft Learning Lab*
+## ➡️ Next Lesson
+
+**Lesson 03** teaches Python to make decisions — `if`, `elif`,
+`else`, comparison operators, and logical operators.
+
+[Lesson 03 — Control Flow :octicons-arrow-right-24:](lesson-03.md)
+
+---
+
+*Lesson 02 of 03 · Python Track · Module 01 — Basics · Code & Core Learning System*
