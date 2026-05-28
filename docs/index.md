@@ -21,10 +21,10 @@ hands-on lessons, real projects, and step-by-step guidance.
 </div>
 
 <a href="coding/python/module-01-basics/lesson-01/" class="hero-btn">
-  🚀 Start Learning
+🚀 Start Learning
 </a>
 <a href="coding/" class="hero-btn outline">
-  📚 Browse Tracks
+📚 Browse Tracks
 </a>
 
 </div>

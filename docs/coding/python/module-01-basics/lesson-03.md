@@ -1,4 +1,8 @@
-# 📘 Lesson 03: Operators & Expressions in Python
+---
+title: Lesson 03 — Operators & Expressions
+description: Master arithmetic, comparison, logical and assignment operators in Python.
+---
+# Lesson 03 — Operators & Expressions
 
 > **Track:** Python Programming  
 > **Module:** 01 — Foundations of Python  
