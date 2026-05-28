@@ -20,31 +20,37 @@ theme:
   name: material
   palette:
     - scheme: default
-      primary: blue
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
         name: Dark mode
     - scheme: slate
-      primary: blue
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-sunny
         name: Light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.expand
     - navigation.top
     - navigation.indexes
+    - navigation.footer
     - search.highlight
     - search.share
     - search.suggest
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
-  logo: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg
-  favicon: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg
+    - announce.dismiss
+    - header.autohide
+  logo: assets/images/logo.svg
+  favicon: assets/images/logo.svg
   icon:
     repo: fontawesome/brands/github
 

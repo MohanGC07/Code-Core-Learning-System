@@ -213,3 +213,22 @@ git push origin main
 ---
 
 *Maintained by [Your Name] · CodeCraft Learning Lab*
+
+
+## 🎬 Watch — Python in 100 Seconds
+
+<div class="video-wrapper" markdown>
+<iframe
+  width="100%"
+  height="415"
+  src="https://www.youtube.com/embed/x7X9w_GIm1s"
+  title="Python in 100 Seconds — Fireship"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+</div>
+
+!!! info "About this video"
+    A fast, visual overview of Python by Fireship — great for
+    reinforcing what you just read.
