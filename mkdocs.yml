@@ -108,9 +108,12 @@ plugins:
 extra_javascript:
   - https://unpkg.com/mermaid@10/dist/mermaid.min.js
 
-extra_css: []
+extra_css:
+  - assets/css/extra.css
 
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/MohanGC07/code-core-learning-system
+
+      

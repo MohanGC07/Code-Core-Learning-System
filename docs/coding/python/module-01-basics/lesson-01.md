@@ -93,6 +93,24 @@ timeline
     Python 2 was retired in 2020. It receives **no updates and no
     security fixes**. Never start a new project in Python 2.
 
+## 🎬 Watch — Python in 100 Seconds
+
+<div class="video-wrapper" markdown>
+<iframe
+  width="100%"
+  height="415"
+  src="https://www.youtube.com/watch?v=YXwnKgSXFKE"
+  title="Python in 100 Seconds — Fireship"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+</div>
+
+!!! info "About this video"
+    A fast, visual overview of Python by Fireship — great for
+    reinforcing what you just read.
+
 ### The Philosophy Behind Python
 
 Guido had a clear vision: Python should be simple, readable, and fun.
