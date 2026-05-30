@@ -38,6 +38,8 @@ theme:
     - content.tabs.link
     - announce.dismiss
     - header.autohide
+    - toc.follow
+    - toc.integrate
   logo: assets/images/logo.svg
   favicon: assets/images/logo.svg
   icon:
